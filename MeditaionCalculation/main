@@ -1,0 +1,30 @@
+###
+# Complete the meditate function using a while loop. It takes mana, max_mana, energy and energy_potions integers.
+
+# 1-While meditating, a character converts 1 energy into 3 mana — their mana cannot exceed their max mana — for each iteration of the loop.
+# 2-mana cannot exceed the max_mana.
+# 3-If they have any energy_potions when they run out of energy, they will use 1 energy potion to gain 50 energy and continue meditating.
+# 4-A character will stop meditating if either:
+#   -Their mana reaches the max_mana, or
+#   -They run out of energy and energy_potions.
+# --------------------------------------------------------
+# Coding challenge from boot.dev this is my take on the puzzle.
+
+def meditate(mana, max_mana, energy, energy_potions):
+    
+    
+    while mana < max_mana:
+        #while we still have energy, we gain 3 mana per 1 energy
+        if energy > 0:
+            energy -= 1
+            mana += 3
+
+            if mana > max_mana: #converts mana value if it goes over max
+                mana = max_mana
+        elif energy_potions > 0: #check for energy potions to keep meditation
+            energy_potions -= 1
+            energy += 50
+        else:
+            break
+
+    return mana, energy, energy_potions
